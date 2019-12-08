@@ -18,6 +18,9 @@ src
 ## Example Integration
 
 ```javascript
+const Discord = require("discord.js");
+const { SobaBot } = require("soba-bot");
+
 const client = new Discord.Client();
 const sobaBot = new SobaBot(process.env.SOBA_API_TOKEN, client);
 
