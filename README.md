@@ -1,4 +1,4 @@
-## Getting Started
+## Getting Started (Development)
 
 1. Set envionment variables
 2. `npm install`
