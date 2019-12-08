@@ -7,20 +7,19 @@
 ## Directory Structure
 
 ```
-index.js # entrypoint to the app
 src
-└───index.js  # discord bot client logic
-
-
+└───index.ts  # discord bot client logic
+└───api       # soba.io api functions
+└───commands  # discord command logic
+└───types     # type information
+└───utils     # misc. helper functions
 ```
 
-```javascript
-if (process.env.HEROKU != "true") {
-  dotenv.config();
-}
+## Example Integration
 
+```javascript
 const client = new Discord.Client();
-const sobaBot = new SobaBot("8e1922030e5074e989b282d23aa6f164", client);
+const sobaBot = new SobaBot(process.env.SOBA_API_TOKEN, client);
 
 client.on("ready", () => {
   console.log("Online");
