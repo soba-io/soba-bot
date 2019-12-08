@@ -1,0 +1,37 @@
+{
+  "name": "soba-bot",
+  "version": "1.0.0",
+  "description": "Discord integration library for soba.io",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build-ts": "tsc",
+    "prepare": "npm run build-ts",
+    "postinstall": "npm run build-ts",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon out/index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\""
+  },
+  "keywords": [
+    "Soba",
+    "Discord"
+  ],
+  "author": "Soba, Inc.",
+  "files": [
+    "out/**/*"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "concurrently": "^5.0.0",
+    "nodemon": "^2.0.1",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.4",
+    "axios": "^0.19.0",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0"
+  }
+}
