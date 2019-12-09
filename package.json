@@ -1,6 +1,6 @@
 {
   "name": "soba-bot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Discord integration library for soba.io",
   "main": "out/index.js",
   "types": "out/index.d.ts",

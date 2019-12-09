@@ -14,9 +14,9 @@ export class SobaBot {
     this.apiToken = apiToken;
     this.discordClient = discordClient;
     this.axios = axios.create({
-      baseURL: process.env.production
-        ? "https://discord.soba.io/api/v1"
-        : "http://localhost:3000/api/v1",
+      baseURL: process.env.development
+        ? "http://localhost:3000/api/v1"
+        : "https://discord.soba.io/api/v1",
       timeout: 30000,
       headers: { Authorization: apiToken }
     });
