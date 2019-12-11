@@ -55,8 +55,7 @@ export const handleFeedback = async (
 
     await API.updateIssue(sobaBot, issue, discordMessage);
   } catch (e) {
-    if (e instanceof Discord.DiscordAPIError) {
-      const errorMsg = `Hi, Soba Bot does not have permissions to post to the \`#${config.feedback_channel_name}\` channel.
+    const errorMsg = `Hi, Soba Bot does not have permissions to post to the \`#${config.feedback_channel_name}\` channel.
 
 Please make sure:
 1) The channel exists
@@ -64,8 +63,8 @@ Please make sure:
 
 Note: Admins can change the permission channel with \`!config channel {channelName}\``;
 
-      sendTempMessage(msg.channel as Discord.TextChannel, errorMsg, 10000);
-    }
+    sendTempMessage(msg.channel as Discord.TextChannel, errorMsg, 10000);
+
     console.log("Cannot post to channel!!!", e);
   }
 };
