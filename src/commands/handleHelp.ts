@@ -17,33 +17,27 @@ export const handleHelp = async (
     fields: [
       {
         name: `${config.prefix}feedback {message}`,
-        value: "Creates new feedback",
-        inline: true
+        value: "Creates new feedback"
       },
       {
         name: `${config.prefix}respond {message}`,
-        value: "[ADMIN] Responds to feedback",
-        inline: true
+        value: "[ADMIN] Responds to feedback"
       },
       {
         name: `${config.prefix}blacklist (add|remove|list) {username#1234}`,
-        value: "[ADMIN] Manage user blacklist",
-        inline: true
+        value: "[ADMIN] Manage user blacklist"
       },
       {
         name: `${config.prefix}delete {issueId}`,
-        value: "[ADMIN] Deletes a feedback issue",
-        inline: true
+        value: "[ADMIN] Deletes a feedback issue"
       },
       {
         name: `${config.prefix}config (set|list) {value}`,
-        value: "[ADMIN] Configuration settings",
-        inline: true
+        value: "[ADMIN] Configuration settings"
       },
       {
         name: `${config.prefix}help`,
-        value: "Shows this message",
-        inline: true
+        value: "Shows this message"
       },
       {
         name: "How to set a user as admin:",

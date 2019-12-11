@@ -4,6 +4,7 @@ import * as API from "../api";
 import * as Discord from "discord.js";
 import { SobaConfig } from "../types/sobaConfig";
 import { getChannel } from "../utils/getChannel";
+import { sendTempMessage } from "../utils/sendTempMessage";
 
 export const handleFeedback = async (
   sobaBot: SobaBot,
@@ -55,21 +56,15 @@ export const handleFeedback = async (
     await API.updateIssue(sobaBot, issue, discordMessage);
   } catch (e) {
     if (e instanceof Discord.DiscordAPIError) {
-      const errorMsg = await msg.channel.send(
-        `Hi, Soba Bot does not have permissions to post to the \`#${config.feedback_channel_name}\` channel.
+      const errorMsg = `Hi, Soba Bot does not have permissions to post to the \`#${config.feedback_channel_name}\` channel.
 
 Please make sure:
 1) The channel exists
 2) Soba Bot's has permissions to post in the channel
 
-Note: Admins can change the permission channel with \`!config channel {channelName}\``
-      );
+Note: Admins can change the permission channel with \`!config channel {channelName}\``;
 
-      setTimeout(() => {
-        if (errorMsg as Discord.Message) {
-          (errorMsg as Discord.Message).delete();
-        }
-      }, 10000);
+      sendTempMessage(msg.channel as Discord.TextChannel, errorMsg, 10000);
     }
     console.log("Cannot post to channel!!!", e);
   }
