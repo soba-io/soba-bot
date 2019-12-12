@@ -16,11 +16,12 @@
     "Soba",
     "Discord"
   ],
-  "author": "Soba, Inc.",
+  "author": "soba.io",
+  "homepage": "https://github.com/soba-io/soba-bot",
   "files": [
     "out/**/*"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node-fetch": "^2.5.4",
     "@types/node": "^12.12.14",
