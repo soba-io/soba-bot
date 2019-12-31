@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import * as API from "./api";
 import * as Commands from "./commands";
 import { parseCommand } from "./utils/parseCommand";
+import { ensureFeedbackChannel } from "./utils/ensureFeedbackChannel";
+import { SobaConfig } from "./types/sobaConfig";
+import { sendTempMessage } from "./utils/sendTempMessage";
 
 export class SobaBot {
   apiToken: string;
@@ -23,11 +26,24 @@ export class SobaBot {
   }
 
   handleMessage = async (msg: Discord.Message) => {
-    const config = await API.getConfig(this, msg);
+    const config: SobaConfig = await API.getConfig(this, msg);
     const command = parseCommand(msg.content, config);
+    const hasChannel = await ensureFeedbackChannel(this, config, msg.guild);
 
     if (msg.author.bot) return;
     if (msg.content.indexOf(config.prefix) !== 0) return;
+    if (!hasChannel) {
+      const errorMsg = `Hi, Soba Bot does not have permissions to post to the \`#${config.feedback_channel_name}\` channel.
+
+Please make sure:
+1) The channel exists
+2) Soba Bot has the following permissions for the channel: \`SEND_MESSAGES\`, \`MANAGE_MESSAGES\`, \`ADD_REACTIONS\`, \`EMBED_LINKS\`, \`READ_MESSAGE_HISTORY\`
+`;
+
+      sendTempMessage(msg.channel as Discord.TextChannel, errorMsg, 10000);
+
+      return;
+    }
 
     console.log("Received Soba Command:", msg.content);
 

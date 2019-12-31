@@ -9,7 +9,7 @@ export const handleHelp = async (
 ) => {
   const embed = {
     title: "Soba Commands",
-    description: "This message will self-destruct in 20 seconds",
+    description: "",
     color: 0x36b47c,
     footer: {
       text: "Powered by soba.io"
@@ -52,4 +52,9 @@ export const handleHelp = async (
       embed
     }
   );
+  setTimeout(() => {
+    if (message as Discord.Message) {
+      (message as Discord.Message).delete();
+    }
+  }, 30000);
 };
