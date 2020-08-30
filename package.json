@@ -23,9 +23,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node-fetch": "^2.5.4",
     "@types/node": "^12.12.14",
-    "concurrently": "^5.0.0",
+    "@types/node-fetch": "^2.5.4",
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.1"
   },
   "dependencies": {
